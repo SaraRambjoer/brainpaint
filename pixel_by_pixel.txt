@@ -1,0 +1,6 @@
+,       Write first pixel value, 0 skips
+[
+>
+,>,>    Write green and blue values
+,       Write next red value or 0 if finished
+]
