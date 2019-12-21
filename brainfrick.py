@@ -70,15 +70,16 @@ class Brainfrick():
 
     def jump_backward(self):
         if self.memory[self.memory_pointer] != self.zero:
-            found_closeds = 0
+            found_closeds = 1
+            self.instruction_pointer -= 1
             # An index error occuring here means the program has no ']' matching the opening '['.
-            while found_closeds == 0 and self.program[self.instruction_pointer] != "[":
+            while found_closeds != 0:
                 if self.program[self.instruction_pointer] == "]":
                     found_closeds += 1
                 elif self.program[self.instruction_pointer] == "[":
                     found_closeds -= 1
                 self.instruction_pointer -= 1
-            self.instruction_pointer -= 1
+            self.instruction_pointer += 1
         else:
             self.instruction_pointer += 1
 
@@ -117,10 +118,6 @@ class Brainfrick():
         while self.instruction_pointer < len(self.program):
             self.execute_instruction()
 
-        # On the end of program write a special EOF-symbol. In bf it is a manner of contention whether one should write
-        # -1 to designate having finished program execution or nothing at all. In this implementation we write the
-        # string "EOF" at the memory address pointed to by the memory pointer because this is convenient for brainpaint.
-        self.memory[self.memory_pointer] = "EOF"
-
+        # Writes nothing special at EOF
 
 

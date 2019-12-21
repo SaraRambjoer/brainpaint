@@ -1,4 +1,4 @@
-,       Write first pixel value, 0 skips
+,       Write first pixel value 0 skips
 [
 >
 ,>,>    Write green and blue values
